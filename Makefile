@@ -8,9 +8,11 @@ all: bootdisk
 .PHONY: bootdisk bootloader os qemu clean
 
 bootloader:
+	@mkdir -p $(BUILD_DIR)
 	make -C bootloader
 
 os:
+	@mkdir -p $(BUILD_DIR)
 	make -C os
 
 bootdisk: bootloader os
@@ -24,3 +26,4 @@ qemu:
 clean:
 	make -C bootloader clean
 	make -C os clean
+	@rm -rf $(BUILD_DIR)
