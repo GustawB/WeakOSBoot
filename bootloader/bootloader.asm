@@ -1,19 +1,13 @@
 ; Bootloader
-org 0x7c00	; loads bootloader under this address. this is standard location for bootloaders
+;org 0x7c00	; loads bootloader under this address. this is standard location for bootloaders
 bits 16
 %include	"io.asm"
 start:
 	jmp boot
 
-;; constants and vars
-msg db "Welcome to WiseOS", 0ah, 0dh, 0h
-; 0ah is Line Feed (LF) character
-; 0dh is Carriage Return (CR) character
-; 0h null terminates string
-
 boot:
 	cli                     ; interrupts disabled
-        cld                     ; default direction
+    cld                     ; default direction
 
 	xor	ax, ax
 	mov	ds, ax
@@ -37,5 +31,4 @@ boot:
 
 	hlt
 
-times 510 - ($-$$) db 0	; fill remaining bytes (of 512 - boot sign = 510) with 0
-dw 0xAA55	; Boot signature
+msg db "Welcome to WiseOS", 0ah, 0dh, 0h
