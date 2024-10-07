@@ -1,5 +1,3 @@
-OUTPUT_FORMAT("elf32-i386")
-
 SECTIONS    /* custom program sections */
 {
     . = 0x7c00;    /* base address */

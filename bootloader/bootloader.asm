@@ -27,7 +27,7 @@ boot:
 	mov	ah, 02h
 	int	13h		; BIOS interrupt for reading from disk
 	xor	di, di
-	jmp	0x0:0x500	; apparently some BIOSes will jump to reverse (seemed to be a case)
+	jmp	[0x500 + 0x18]	; ELF header man: entry addres is 18 bytes away from the beginning of the ELF segment.
 
 	hlt
 
