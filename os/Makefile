@@ -10,9 +10,9 @@ all: $(OS)
 
 $(BUILD_DIR)/os.o: os.c
 	@mkdir -p $(BUILD_DIR)
-	gcc $(CFLAGS) -c $< -o $@
+	i686-elf-gcc $(CFLAGS) -c $< -o $@
 
 $(OS): $(OS_OBJS)
-	ld -m elf_i386 -nmagic -T os.lds $(OS_OBJS) -o $@
+	i686-elf-ld -nmagic -T os.lds $(OS).o -o $(OS)
 clean:
 	rm -rf $(BUILD_DIR)

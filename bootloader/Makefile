@@ -8,7 +8,7 @@ all: $(BOOTLOADER_OBJS)
 $(BUILD_DIR)/bootloader.o: bootloader.asm
 	@mkdir -p $(BUILD_DIR)
 	nasm -f elf $< -F dwarf -g -o $@
-	ld -m elf_i386 -T bootloader.lds -g $@ -o $@.elf
+	i686-elf-ld -T bootloader.lds -g $@ -o $@.elf
 	objcopy -O binary $(BUILD_DIR)/bootloader.o.elf $@
 	
 clean:
